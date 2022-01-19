@@ -1,4 +1,4 @@
-//symbol data introduced in ES6
-mySym = Symbol("Cody");
-console.log("Symbol ", mySym);
-console.log("TypeOf Symbol ", typeof mySym);
+var foo = 2
+var bar = 2
+
+foo === bar ? console.log("foobar") : console.log(foo+bar);
