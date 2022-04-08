@@ -1,0 +1,23 @@
+Virtual DOM:
+    -kept in memory on browser
+    -uses diff algorithm to find changed element
+    -only renders changed element
+    -algorith uses DFS
+
+single/multi page:
+    -multi new page request per call
+    -single updates page instead of reloading whole page
+    -single loads dom once
+
+React:
+    -class component has state and base render method, has lifecycle methods
+    -functional component only returns html dom
+    -react-dom render method does bootstrap, diff, and patching
+    -component render method returns dom
+    -uses js expressions in html
+
+Redux:
+    -uses a publisher/subscriber store to share information
+    -new state is generated when there is a state change
+    -reducers gives new state when updated
+    -action->dispatch->reducer->store
