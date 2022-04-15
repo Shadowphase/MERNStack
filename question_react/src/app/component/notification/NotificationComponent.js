@@ -2,9 +2,10 @@ import React from "react";
 
 let NotificationComponent = (props)=>{
     let noteName = props.noteName;
+    let noteQty = props.noteQty;
 
     return (<>
-        <span>{noteName}</span>
+        <span>{noteName} {noteQty}</span>
     </>);
 }
 

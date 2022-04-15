@@ -3190,6 +3190,10 @@ select.stack {
   border: 1px solid darkgray;
 }
 
+.green{
+  background-color: #2ecc40;
+}
+
 .overlay-element:hover{
   background-color: #268bff;
 }

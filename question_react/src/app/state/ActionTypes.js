@@ -16,3 +16,8 @@ export const COUPON_STORE = "coupon.store";
 
 //Orders
 export const ORDER_STORE = "order.store";
+
+//Notifications
+export const NOTIFICATION_STORE = "notif.store";
+export const NOTIFICATION_UPDATE = "notif.update";
+export const NOTIFICATION_REMOVE = "notif.remove";

@@ -13,7 +13,6 @@ webpackConfig = {
         filename: "bundle.js",
         publicPath: "/app/"
     },
-
     module:{
         rules:[
             {
@@ -30,6 +29,17 @@ webpackConfig = {
                 test:/\.(css)$/,
                 include:SRC_DIR,
                 use:['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(png|jp(e*)g|svg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'images/[hash]-[name].[ext]',
+                        }
+                    }
+                ]
             }
         ]
     },

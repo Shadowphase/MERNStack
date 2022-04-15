@@ -19,6 +19,7 @@
         "babel-loader": "8.1.0",
         "bootstrap": "5.1.1",
         "css-loader": "4.3.0",
+        "file-loader": "^6.2.0",
         "style-loader": "1.2.1",
         "uglifyjs-webpack-plugin": "2.2.0",
         "webpack": "4.44.1",

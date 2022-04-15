@@ -1,14 +1,17 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {NavLink, useNavigate} from "react-router-dom";
-import NotificationContainerComponent from "../component/notification/NotificationContainer";
+import { updateNotification } from "../state/notifications/NotificationActions";
 import { logout } from "../state/user/UserAction";
+import * as Notifications from "../common/Notifications";
+import NotificationContainerComponent from "../component/notification/NotificationContainer";
 
 let Header = (props)=>{
     let user = useSelector((state)=>state.userReducer.user);
     let username = user && user.username ? user.username : "Guest";
     let cartList = useSelector((state)=>state.cartReducer.cart);
     let [cartSize, setCartSize] = useState(null);
+    let gotCart = true;
 
     let navigator = useNavigate();
     let headerDispatcher = useDispatch();
@@ -19,6 +22,20 @@ let Header = (props)=>{
     }
 
     useEffect(()=>{
+        console.log("header didmount", cartList);
+        gotCart = false;
+    }, []);
+
+    useEffect(()=>{
+        setCartSize(getCartSum());
+        if(!gotCart){
+            console.log("got cart");
+            headerDispatcher(updateNotification(Notifications.CART, getCartSum(), false));
+            gotCart = true;
+        }
+    });
+
+    function getCartSum(){
         let sum = 0;
         for(let item of cartList){
             if(item.qty){
@@ -27,8 +44,8 @@ let Header = (props)=>{
                 ++sum;
             }
         }
-        setCartSize(sum);
-    });
+        return sum;
+    }
 
     return(
         <>
@@ -37,8 +54,7 @@ let Header = (props)=>{
                 <div>
                     <NavLink to="/cart" className="button rightJustify" activeclassname="success" >Cart {cartSize}</NavLink>
                     <button className="rightJustify" onClick={logoutFunc}>Logout</button>
-                    <button className="notification" onClick={()=>{}}>Notification</button>
-                    <NotificationContainerComponent/>
+                    <NotificationContainerComponent />
                 </div> : "" }
             <hr/>
             <NavLink to="/" className="button" activeclassname="success" >Home</NavLink>
